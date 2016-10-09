@@ -1,0 +1,148 @@
+<!doctype html>
+<html lang="en" ng-app="pokedex">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Pokedex by Igor</title>
+
+    <!-- Styles (Less) -->
+    <link rel="stylesheet/less" href="css/style.less">
+
+    <!-- Scripts -->
+    <script src="js/less.min.js"></script>
+
+    <!--<link rel="stylesheet" type="text/css" href="css/style.css">-->
+
+    <link rel="stylesheet" href="bower_components/normalize-css/normalize.css">
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
+
+</head>
+<body>
+
+<header class="container">
+    <div class="row">
+        <nav class="navbar navbar-inverse">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="#/">Angular store</a>
+            </div>
+
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                           aria-expanded="false">ТОВАРЫ <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="/#/guitars">Гитары</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </div>
+</header>
+
+
+<div role="main" class="container">
+    <div class="row" >
+        <div ng-view>  </div>
+
+    </div>
+</div>
+
+
+<div class="main__wrapper" >
+
+<div class="main__container">
+    <div class="main__row" ng-init="tab = 1" >
+        <div ng-controller="PokeController as mainCtrl">
+            <div ng-controller="GalleryController as gallery">
+                <div ng-repeat="poke in mainCtrl.pokemons.objects" id='ngRepeatDiv' class="main__poke-mini-info-wrapper "
+                     ng-click="gallery.setCurrent(mainCtrl.pokemons.objects.indexOf(poke));mainCtrl.setCurrentId(poke.pkdx_id);changeClass2();">
+                    <!--col-md-5 col-xs-7 col-xl-3-->
+
+                    <div class="main__poke-mini-info-wrapper-2"  >
+
+                        <div class="main__poke-mini-text">
+                            <p class="main__poke-Name"> {{poke.name}}</p>
+                            <p class="main__poke-Attack">Attack: {{poke.attack}}</p>
+                <!--<p> indexOf {{mainCtrl.pokemons.objects.indexOf(poke)}}</p>-->
+    <!--<p c    lass="main__poke-Id"> ID!! - {{poke.pkdx_id}}</p>-->
+
+                            <div ng-repeat="type in poke.types" class="main__poke-type" >
+                                <button class="main__poke-type-button {{type.name}}" id="content">
+                               <!-- ng-click="gallery.setCurrent(mainCtrl.pokemons.objects.indexOf(poke));mainCtrl.setCurrentId(poke.pkdx_id)"-->
+                                    {{type.name}}
+                                <!-- {{gallery.current}} {{mainCtrl.currentId}}-->
+                                </button>
+                            </div>
+
+                        </div><!--main__poke-mini-text-->
+                            <img class="main__poke-img" ng-src="{{'http://pokeapi.co/media/img/'+(poke.pkdx_id)+'.png'}}"/>
+                        <a href="#" class="main__favorites-a"><img class="main__favorites-img" src="pictures/07_star-512.png"> </a>
+                    </div> <!--main__poke-mini-info-wrapper-2-->
+
+    <div class="description__form description__form-show" id="d-Form">
+
+        <div class='description__form-stats' >
+            <p >{{mainCtrl.pokemons.objects[gallery.current].name}} {{mainCtrl.currentId}}</p>
+            <p> <img ng-src="{{'http://pokeapi.co/media/img/'+(mainCtrl.currentId)+'.png'}}"/> </p>
+            <p >Attack: {{mainCtrl.pokemons.objects[gallery.current].attack}} </p>
+            <p style="" >Defense: {{mainCtrl.pokemons.objects[gallery.current].defense}} </p>
+            <p >HP: {{mainCtrl.pokemons.objects[gallery.current].hp}} </p>
+            <p >Height: {{mainCtrl.pokemons.objects[gallery.current].height}} </p>
+            <p >Speed: {{mainCtrl.pokemons.objects[gallery.current].speed}} </p>
+            <p >Weight: {{mainCtrl.pokemons.objects[gallery.current].weight}} </p>
+
+            <button class="btn   col-md-6 " id="moreInfoBtn1" onclick="changeClass1()">Close</button>
+        </div>
+    </div><!--main__poke-mini-info-wrapper-->
+                </div>
+            </div> <!--gallery controller-->
+
+
+
+        </div> <!--wrapper-->
+
+    </div><!--main ctrl-->
+</div>
+
+    <main-bodyin></main-bodyin>
+
+    <button class="btn  col-md-6 " id="moreInfoBtn" onclick="changeClass()">More info</button>
+
+ <!--
+ <p></p>   attack {{mainCtrl.pokemons.objects[0].attack}} &lt;!&ndash;attack&ndash;&gt;
+ <p></p>   attack PKDX ID {{mainCtrl.pokemons.objects[0].pkdx_id}} &lt;!&ndash;attack&ndash;&gt;
+  <p></p>   type {{mainCtrl.pokemons.objects[0].types[0].name}} &lt;!&ndash;type&ndash;&gt;
+
+ <p></p> description  {{'http://pokeapi.co'+mainCtrl.pokemons.objects[1].descriptions[0].resource_uri+'description'}} &lt;!&ndash;description&ndash;&gt;
+{{mainCtrl.a.description}}
+
+    {{'http://pokeapi.co'+mainCtrl.pokemons.objects[5].sprites[1].resource_uri+'media/img/503.png'}} и правильный url http://pokeapi.co/media/img/503.png
+    <p></p>   <img ng-src="{{'http://pokeapi.co/media/img/503.png'}}"/>
+    -->
+
+
+   <!--
+    <p></p>     {{'http://pokeapi.co'+mainCtrl.pokemons.objects[5].sprites[1].resource_uri+'media/img/1383395659.12.png'}}
+
+    <p></p>     <img ng-src="{{'http://pokeapi.co'+mainCtrl.pokemons.objects[5].sprites[0].resource_uri+'media/img/1383395659.12.png'}}"/>
+
+
+    <p>http://pokeapi.co/media/img{{mainCtrl.pokemons.objects[5].sprites[0].resource_uri}}.png</p>     <img ng-src="http://pokeapi.co/media/img{{mainCtrl.pokemons.objects[1].sprites[0].resource_uri}}.png"/>
+
+-->
+
+
+<script src="bower_components/jquery/dist/jquery.js"></script>
+<script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+<script src="bower_components/angular/angular.js"></script>
+<script src="bower_components/angular-route/angular-route.js"></script>
+
+
+<script src="js/all.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>

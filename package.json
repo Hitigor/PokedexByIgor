@@ -1,0 +1,26 @@
+{
+  "name": "pokedex",
+  "version": "0.0.0",
+  "description": "pokedex by Igor",
+  "repository": "https://github.com/Hitigor/PokedexByIgor.git",
+  "license": "MIT",
+  "devDependencies": {
+    "babel-install": "2.1.0",
+    "babel-polyfill": "^6.9.1",
+    "babel-preset-es2015": "^6.16.0",
+    "bower": "^1.7.9",
+    "gulp": "^3.9.1",
+    "gulp-babel": "^6.1.2",
+    "gulp-concat": "^2.6.0",
+    "gulp-concat-css": "^2.3.0",
+    "gulp-install": "^0.6.0",
+    "gulp-watch": "^4.3.10",
+    "http-server": "^0.9.0"
+  },
+  "scripts": {
+    "install": "bower install",
+    "postinstall": "gulp build",
+    "prestart": "npm install",
+    "start": "http-server -a localhost -p 8000 -c-1 ./app"
+  }
+}

@@ -1,0 +1,33 @@
+.description__form {
+  display: block;
+  width: 350px;
+  height: 500px;
+  background-color: #00b3ee;
+  position: absolute;
+  left: 68%;
+  top: 15%;
+}
+.main__wrapper {
+  position: relative;
+  width: 100%;
+}
+.main__container {
+  background-color: #00ee00;
+}
+.main__poke-mini-info-wrapper {
+  border: 1px solid red;
+  padding-left: 150px;
+  padding-top: 50px;
+  /*margin-bottom: 100px;*/
+  /*width: 35%;
+  height: 30%;
+  display: block;
+  float: left;*/
+}
+.main__poke-Id {
+  font-weight: bold;
+}
+.main__poke-Name {
+  font-size: 18px;
+  color: red;
+}

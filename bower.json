@@ -1,0 +1,13 @@
+{
+  "name": "pokedex",
+  "description": "pokedex by Igor",
+  "version": "0.0.0",
+  "homepage": "https://github.com/Hitigor/PokedexByIgor.git",
+  "dependencies": {
+    "angular": "^1.5.8",
+    "normalize-css": "^4.2.0",
+    "bootstrap": "^3.3.7",
+    "jquery": "^3.1.0",
+    "angular-route": "^1.5.8"
+  }
+}
