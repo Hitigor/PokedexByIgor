@@ -1,0 +1,62 @@
+
+<div class="main__wrapper" >
+
+    <div class="main__container">
+
+        <div ng-controller="PokeController as mainCtrl">
+            <div ng-controller="GalleryController as gallery">
+                <div   ng-repeat="poke in mainCtrl.pokemons.objects" id='ngRepeatDiv' class="main__poke-mini-info-wrapper forJquery  "
+                     ng-click="gallery.setCurrent(mainCtrl.pokemons.objects.indexOf(poke));mainCtrl.setCurrentId(poke.pkdx_id);changeClass3();">
+                    <!--col-md-5 col-xs-7 col-xl-3-->
+
+                    <div class="main__poke-mini-info-wrapper-2"  >
+
+                        <div class="main__poke-mini-text">
+                            <p class="main__poke-Name"> {{poke.name}}</p>
+                            <p class="main__poke-Attack">Attack: {{poke.attack}}</p>
+
+                            <div ng-repeat="type in poke.types"  class="main__poke-type" >
+                                <button class="main__poke-type-button {{type.name}}" id="content">
+
+                                    {{type.name}}
+
+                                </button>
+                            </div>
+
+                        </div><!--main__poke-mini-text-->
+                        <img class="main__poke-img" ng-src="{{'http://pokeapi.co/media/img/'+(poke.pkdx_id)+'.png'}}"/>
+
+                        <a href="#" class="main__favorites-a mainCtrl.pokemons.objects[gallery.current]"
+                           ng-click="save(mainCtrl.pokemons.objects[gallery.current],data.pkdx_id )">
+                           </a>
+
+                    </div> <!--main__poke-mini-info-wrapper-2-->
+
+                    <div class="description__form description__form-show " id="d-Form">
+
+                        <div class='description__form-stats' >
+                            <p >{{mainCtrl.pokemons.objects[gallery.current].name}} {{mainCtrl.currentId}}</p>
+                            <p> <img ng-src="{{'http://pokeapi.co/media/img/'+(mainCtrl.currentId)+'.png'}}"/> </p>
+                            <p >Attack: {{mainCtrl.pokemons.objects[gallery.current].attack}} </p>
+                            <p style="" >Defense: {{mainCtrl.pokemons.objects[gallery.current].defense}} </p>
+                            <p >HP: {{mainCtrl.pokemons.objects[gallery.current].hp}} </p>
+                            <p >Height: {{mainCtrl.pokemons.objects[gallery.current].height}} </p>
+                            <p >Speed: {{mainCtrl.pokemons.objects[gallery.current].speed}} </p>
+                            <p >Weight: {{mainCtrl.pokemons.objects[gallery.current].weight}} </p>
+
+                            <button class="btn   col-md-6 " id="moreInfoBtn1" onclick="changeClass1()">Close</button>
+                        </div>
+                    </div><!--main__poke-mini-info-wrapper-->
+                </div>
+            </div> <!--gallery controller-->
+
+
+
+        </div> <!--wrapper-->
+
+    </div><!--main ctrl-->
+</div>
+
+
+
+<button class="btn  col-md-6 " id="moreInfoBtn" onclick="changeClass()">More info</button>

@@ -7,7 +7,7 @@
 
     /* ********************** __Controllers__ *********************************** */
 
-    var app = angular.module('pokedex', []);
+    var app = angular.module('pokedex', ["ngStorage", 'angular-locker']);
 
     app.controller('PokeController', ["$http", /*"$routeParams",*/ function ($http/*, $routeParams*/) {
         console.log("ControllerOn");
@@ -46,11 +46,15 @@
         };
 
         $(document).ready(function(){
-            $(".main__poke-mini-info-wrapper").click(function(){
-                $(this).toggleClass("active-info");
+            $(".forJquery").click(function(){
+                console.log('click');
+                $(this).removeClass("active-info");
+                $(this).addClass("active-info");
                 $(this).siblings("div").removeClass("active-info");
             });
         });
+
+
 
     }]);
 
@@ -62,14 +66,56 @@
         };
     });
 
+    app.controller('TabController', function(){
+        this.tab = 1;
+
+        this.setTab = function(newValue){
+            this.tab = newValue;
+        };
+
+        this.isSet = function(tabName){
+            return this.tab === tabName;
+        };
+    });
+
+    app.controller("StorageController", function($scope, $localStorage) {
+
+        $scope.save = function(abv, id) {
+
+            $localStorage.fav = abv ;
+        };
+
+        $scope.load = function() {
+            $scope.data = $localStorage.fav;
+        }
+
+    });
+
+
     app.directive('mainBodyin', function () {
         return {
             restrict: 'E',
-            templateUrl: '../templates/first.html',
+            templateUrl: '../templates/mainBody.html',
             controller: 'PokeController',
             controllerAs: 'PokeCtrl'
         }
     });
+        app.directive('firstTab', function(){
+            return {
+                restrict: 'E',
+                templateUrl: '../templates/firstTab.html',
+                controller: 'PokeController',
+                controllerAs: 'PokeCtrl'
+            }
+        });
+        app.directive('secondTab', function(){
+            return {
+                restrict: 'E',
+                templateUrl: '../templates/secondTab.html',
+                controller: 'PokeController',
+                controllerAs: 'PokeCtrl'
+            }
+        });
 
 
 
