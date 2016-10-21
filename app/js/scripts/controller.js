@@ -1,6 +1,6 @@
 (function () {
 
-    var app = angular.module('pokedex', ["ngStorage", 'angular-locker']);
+    var app = angular.module('pokedex', ["ngStorage"]);
 
     app.controller('PokeController', ["$http", /*"$routeParams",*/ function ($http/*, $routeParams*/) {
         console.log("ControllerOn");
@@ -64,14 +64,30 @@
         }
 
     });
-
-    app.controller('LockerController', function(){
-
-
-    })
-        .factory('MyFactory', ['locker', function MyFactory(locker) {
-            locker.put('someKey', 'someVal');
-        }]);
+    app.directive('mainBodyin', function () {
+        return {
+            restrict: 'E',
+            templateUrl: '../templates/mainBody.html',
+            controller: 'PokeController',
+            controllerAs: 'PokeCtrl'
+        }
+    });
+    app.directive('firstTab', function(){
+        return {
+            restrict: 'E',
+            templateUrl: '../templates/firstTab.html',
+            controller: 'PokeController',
+            controllerAs: 'PokeCtrl'
+        }
+    });
+    app.directive('secondTab', function(){
+        return {
+            restrict: 'E',
+            templateUrl: '../templates/secondTab.html',
+            controller: 'PokeController',
+            controllerAs: 'PokeCtrl'
+        }
+    });
 
 
 })();
